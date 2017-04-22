@@ -1,0 +1,105 @@
+﻿<Window x:Class="Tetris.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:control="clr-namespace:Tetris"
+        x:Name="mainViewModel"
+        KeyDown="Window_KeyDownEvents"
+        WindowStyle="ToolWindow"
+        MaxHeight="640" MaxWidth="800"
+        Title="Tetris" Height="640" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="410"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <control:BoardView Grid.Column="0" 
+                           TetrisBoard="{Binding ElementName=mainViewModel, Path=DataContext.TetrisBoard,UpdateSourceTrigger=PropertyChanged}"
+                           IsGameOver="{Binding ElementName=mainViewModel,Path=DataContext.IsGameOver,Mode=TwoWay}"/>
+        <StackPanel Grid.Column="1" Orientation="Vertical" Background="Lavender">
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal" Background="LightGray" >
+                <GroupBox Margin="5,5,5,5" Header="Game Status" Width="200" FontWeight="Black" BorderBrush="Gray" >
+                    <Viewbox MaxHeight="100" HorizontalAlignment="Left">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Level"/>
+                            <TextBlock Grid.Row="1" xml:space="preserve" Text="{Binding GameLevel,Mode=TwoWay}" HorizontalAlignment="Center"/>
+                        </Grid>
+
+                    </Viewbox>
+                </GroupBox>
+                <GroupBox Margin="5,5,5,5" Header="Next Block" FontWeight="Black" BorderBrush="Gray">
+                    <control:BlockControl BlockBoard="{Binding ElementName=mainViewModel, Path=DataContext.BlockBoard,UpdateSourceTrigger=PropertyChanged}"
+                                          HorizontalAlignment="Right"/>
+                </GroupBox>
+            </StackPanel>
+            <GroupBox Margin="5,5,5,5" Header="Tetris" FontWeight="Black" BorderBrush="Gray" Background="LightGray" BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Height="30" Content="{Binding StartPauseResume,Mode=TwoWay}" Command="{Binding StartGameCommand}"/>
+                    <Button Grid.Column="4" Height="30" Content="Reset" Command="{Binding ResetGameCommand}" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Margin="5,5,5,5" FontWeight="Black" BorderBrush="Gray" Background="LightGray">
+
+                <StackPanel Orientation="Vertical" >
+                    <Viewbox MaxHeight="40" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Current Score" Width="80" FontWeight="Medium" />
+                            <TextBlock Text="{Binding Score,Mode=TwoWay}" Width="110"/>
+                        </StackPanel>
+                    </Viewbox>
+                    <Viewbox MaxHeight="40" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="High Score" Width="80" FontWeight="Medium"/>
+                            <TextBlock Text="{Binding HighScore,Mode=TwoWay}" Width="110"/>
+                        </StackPanel>
+                    </Viewbox>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Margin="5,5,5,5" Header="Controls" FontWeight="Black" BorderBrush="Gray" Background="LightGray">
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="37*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Move Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5"/>
+                    <TextBlock Grid.Row="1" Text="Move Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,4"/>
+                    <TextBlock Grid.Row="2" Text="Land Block" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,4"/>
+                    <TextBlock Grid.Row="3" Text="Rotate AntiClock Wise" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,4"/>
+                    <TextBlock Grid.Row="4" Text="Rotate Clock Wise" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,5,0,4"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Key Left" VerticalAlignment="Center" Margin="0,5"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Key Right" VerticalAlignment="Center" Margin="0,5,0,4"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="Key Down" VerticalAlignment="Center" Margin="0,5,0,4"/>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="A" VerticalAlignment="Center" Margin="0,5,0,4"/>
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="S" VerticalAlignment="Center" Margin="0,5,0,4"/>
+                </Grid>
+                
+            </GroupBox>
+            <TextBlock Height="100"/>
+            <GroupBox BorderBrush="Gray" Background="BlanchedAlmond" Header="" BorderThickness="2">
+                <TextBlock  Text="2017 &#169; Bhagwat Kumar. All rights reserved." HorizontalAlignment="Right"
+                           FontWeight="SemiBold" FontStyle="Italic" VerticalAlignment="Center"/>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
