@@ -314,6 +314,10 @@ namespace Tetris
         }
         #endregion
 
+        /// <summary>
+        /// Generate new block based on the block type-id
+        /// </summary>
+        /// <param name="blockType"></param>
         private void GetNewBlock(int blockType)
         {
             try
@@ -330,6 +334,10 @@ namespace Tetris
             
         }
   
+        /// <summary>
+        /// Tetris Event Handler...
+        /// </summary>
+        /// <param name="cmd"></param>
         private void TetrisEventHandler(Command cmd)
         {
             try
@@ -353,6 +361,9 @@ namespace Tetris
             }
         }
         
+        /// <summary>
+        /// New Block Generater..
+        /// </summary>
         private void GenerateNewBlock()
         {
             try
@@ -392,6 +403,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Remove piles from board.
+        /// </summary>
         private void RemovePilesFromBoard()
         {
             try
@@ -445,6 +459,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Remove piles handler and updating dependency property...
+        /// </summary>
         private void RemovePilesHandler()
         {
             try
@@ -461,6 +478,10 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Handler to check if piles are available to be removed.
+        /// </summary>
+        /// <returns></returns>
         private bool IsPilesRemoved()
         {
             bool flag = false;
@@ -497,6 +518,10 @@ namespace Tetris
             return flag;
         }
 
+        /// <summary>
+        /// Update Tatris Matrix 
+        /// </summary>
+        /// <param name="Mat"></param>
         private void UpdateMatrix(ref Matrix[,] Mat)
         {
             try
@@ -518,6 +543,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Initialize Tetris Board.
+        /// </summary>
         private void InitializeTetris()
         {
             try
@@ -537,6 +565,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Initialize Next Tetris block to be landed.
+        /// </summary>
         private void InitializeNextBlock()
         {
             try
@@ -555,6 +586,9 @@ namespace Tetris
             }
         }
         
+        /// <summary>
+        /// Paint Canvas Handler- Providing values to the dependency property..
+        /// </summary>
         private void PaintCanvasHandler()
         {
             try
@@ -603,6 +637,10 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Remove row of blocks if found any..
+        /// </summary>
+        /// <param name="flag"></param>
         private void RemoveBlocksIfAny(bool flag)
         {
             try
@@ -623,6 +661,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Block to be landed.
+        /// </summary>
         private void BlockLandHandler()
         {
             try
@@ -651,6 +692,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Block move handler and updating tatris matrix.
+        /// </summary>
         private void BlockMoveHandler()
         {
             try
@@ -673,6 +717,11 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Handler to check if blocks are overlapped.
+        /// </summary>
+        /// <param name="flag"></param>
+        /// <returns></returns>
         private bool CheckBlockOverlapHandler(bool flag)
         {
             try
@@ -706,6 +755,10 @@ namespace Tetris
             return flag;
         }
 
+        /// <summary>
+        /// Find a base line where a block can land safely or without overlapping..
+        /// </summary>
+        /// <param name="landSize"></param>
         private void FindBlockBaseLandRowHandler(int landSize)
         {
             try
@@ -731,6 +784,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Display Game over board. Set Tetris block to empty to show a game over text
+        /// </summary>
         private void DisplayGameOverBoard()
         {
             try
@@ -753,6 +809,9 @@ namespace Tetris
         }
 
         #region Command Handler...
+        /// <summary>
+        /// Make block Move down / move down fast
+        /// </summary>
         public void LandCommandHandler()
         {
             try
@@ -781,6 +840,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Make right move of a block 
+        /// </summary>
         public void RightCommandHandler()
         {
             try
@@ -817,6 +879,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Make left move of a block
+        /// </summary>
         public void LeftCommandHandler()
         {
             try
@@ -850,6 +915,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Rotate block in clockwise direction.
+        /// </summary>
         public void RotateRightCommandHandler()
         {
             try
@@ -913,6 +981,9 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Rotate block in Anti-clockwise direction
+        /// </summary>
         public void RotateLeftCommandHandler()
         {
             try
