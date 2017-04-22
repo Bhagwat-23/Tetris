@@ -948,6 +948,7 @@ namespace Tetris
                                 moveLeftRight--;
                             //return;
                         }
+
                         int[,] temp = new int[MAX_ROW, MAX_COL];
                         int[,] temp1 = new int[MAX_ROW, MAX_COL];
                         for (int i = 0; i < CurrentBlockRow; i++)
@@ -957,7 +958,6 @@ namespace Tetris
                                 temp[i, j] = CurrentBlock[i, j];
                             }
                         }
-
 
                         //
                         for (int i = 0; i < MAX_ROW; i++)
@@ -980,8 +980,16 @@ namespace Tetris
                         SwapRowCol();
 
                         temp = ModifyBlock(ref temp);
-
-                        CurrentBlock = temp.Clone() as int[,];
+                        
+                        if (moveUpDown + CurrentBlockRow <= MAX_HEIGHT)//Rotate block
+                        {
+                            CurrentBlock = temp.Clone() as int[,];
+                        }
+                        else //Dont rotate block
+                        {
+                            //Revert changes.
+                            SwapRowCol();
+                        }
 
                         if (TetrisEvent != null)
                             TetrisEvent.Invoke(Command.ROTATE_RIGHT);
@@ -1026,9 +1034,17 @@ namespace Tetris
                         SwapRowCol();
 
                         temp = ModifyBlock(ref temp);
-
-                        CurrentBlock = temp.Clone() as int[,];
-
+                        
+                        if (moveUpDown + CurrentBlockRow <= MAX_HEIGHT)//Rotate block
+                        {
+                            CurrentBlock = temp.Clone() as int[,];
+                        }
+                        else //Dont rotate block
+                        {
+                            //Revert changes.
+                            SwapRowCol();
+                        }
+                                                                   
                         if (TetrisEvent != null)
                             TetrisEvent.Invoke(Command.ROTATE_LEFT);
                         //timer.Start();
