@@ -183,6 +183,11 @@ namespace Tetris
            // timer.Start();
         }
 
+        #endregion
+
+        /// <summary>
+        /// Update Next block handler...
+        /// </summary>
         private void UpdateNextBlock()
         {
             try
@@ -208,10 +213,9 @@ namespace Tetris
             }
         }
 
-
-
-
-
+        /// <summary>
+        /// Reset Game Handler...
+        /// </summary>
         private void ResetGameCommandHandler()
         {
             try
@@ -237,13 +241,16 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Update High score handler..
+        /// </summary>
         private void UpdateHighScore()
         {
             try
             {
                 string strScore = string.Empty;
                 string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                string path = string.Format(@"{0}\{1}",userDirectory, "TetrisScore.txt");
+                string path = string.Format(@"{0}\{1}", userDirectory, "TetrisScore.txt");
                 if (!File.Exists(path))
                 {
 
@@ -268,8 +275,9 @@ namespace Tetris
             }
         }
 
-       
-
+        /// <summary>
+        /// Start Game command Handler...
+        /// </summary>
         private void StartGameCommandHandler()
         {
             try
@@ -308,11 +316,17 @@ namespace Tetris
             }
         }
 
+        /// <summary>
+        /// Dispatcher Timer Handler... ticks at every 'x' milisecond 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DispatcherTimerHandler(object sender, EventArgs e)
-        {   
+        {
             Application.Current.Dispatcher.BeginInvoke(new Action(() => GenerateNewBlock()), DispatcherPriority.SystemIdle);
         }
-        #endregion
+        
+
 
         /// <summary>
         /// Generate new block based on the block type-id
